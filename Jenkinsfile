@@ -37,7 +37,17 @@ pipeline {
         }
     }
 
-    post {
+        post {
+        success {
+            emailext to: 'prasanna.g1206@gmail.com',
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Build passed. Image ${IMAGE_NAME}:${IMAGE_TAG} pushed. Details: ${env.BUILD_URL}"
+        }
+        failure {
+            emailext to: 'prasanna.g1206@gmail.com',
+                subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Build failed. Check the console output: ${env.BUILD_URL}console"
+        }
         always {
             sh 'docker logout || true'
         }
