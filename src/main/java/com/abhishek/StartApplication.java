@@ -12,7 +12,7 @@ public class StartApplication {
 
     @GetMapping("/")
     public String index(final Model model) {
-        model.addAttribute("title", "CI/CD Pipeline by Gnana Prasanna");
+        model.addAttribute("title", "Fully automated GitOps pipeline by Gnana Prasanna");
         model.addAttribute("msg", "Built with Maven, scanned with Trivy, deployed to Kubernetes using Jenkins");
         return "index";
     }
